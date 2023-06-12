@@ -1,7 +1,7 @@
 import requests, json, base64
 import time
 
-webhookUrl = "https://discord.com/api/v10/webhooks/1117724344127332402/RIhQZHyH3_eiOStaweSEEmwoaHevtIWIA9m15DaqnE9MxpZT33G823Xl3SAQDT8WyE1O"
+webhookUrl = ""
 
 class Hcaptcha():
     def __init__(self) -> None:
@@ -124,7 +124,8 @@ class Hcaptcha():
                     self.HswVersion.append(version)
                     self.HswOldVersion = self.HswNewVersion
                     self.HswNewVersion = version
-                    self.sendHswVersionChange(self.HswOldVersion,version)
+                    if webhookUrl != "":
+                        self.sendHswVersionChange(self.HswOldVersion,version)
                     print(f'New Hsw Version Detected: {version}')
                     print(f'From {self.HswOldVersion} to {version}')
                 time.sleep(60)
